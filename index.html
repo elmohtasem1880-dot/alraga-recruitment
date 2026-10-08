@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة الرجا للاستقدام | Alraga Recruitment</title>
+    <title id="pageTitle">شركة الرجا لاستقدام العمالة المنزلية | Alraga Recruitment</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -43,6 +43,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .top-bar-info span {
@@ -72,7 +74,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 900;
             color: var(--secondary);
             text-decoration: none;
@@ -92,7 +94,7 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 25px;
             align-items: center;
         }
 
@@ -101,26 +103,11 @@
             color: var(--text-main);
             font-weight: 600;
             transition: var(--transition);
-            position: relative;
+            cursor: pointer;
         }
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            right: 0;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
         }
 
         .admin-btn {
@@ -134,26 +121,20 @@
 
         .admin-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
         }
 
-        .admin-btn::after { display: none !important; }
-
-        /* Hero Section */
+        /* Hero Section (Home Page) */
         .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             color: white;
-            padding: 140px 5% 100px;
+            padding: 160px 5% 120px;
             text-align: center;
-            clip-path: ellipse(150% 100% at 50% 0%);
         }
 
         .hero h1 {
             font-size: 3.2rem;
             margin-bottom: 20px;
             font-weight: 900;
-            letter-spacing: -1px;
-            animation: fadeInDown 1s ease;
         }
 
         .hero h1 span {
@@ -165,14 +146,6 @@
             max-width: 700px;
             margin: 0 auto 40px;
             color: #cbd5e1;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            animation: fadeIn 1.5s ease;
         }
 
         .btn {
@@ -184,6 +157,7 @@
             cursor: pointer;
             border: none;
             font-size: 1rem;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -197,111 +171,138 @@
             transform: scale(1.05);
         }
 
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
+        /* Features Intro */
+        .features-intro {
+            padding: 80px 5%;
+            background: white;
+            text-align: center;
         }
 
-        .btn-outline:hover {
-            border-color: var(--primary);
-            background: rgba(16, 185, 129, 0.1);
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            text-align: right;
         }
 
-        /* Sections */
+        .feature-card {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        /* Containers & Sections */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 20px;
+            padding: 60px 20px;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             color: var(--secondary);
             font-weight: 900;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
+            margin-bottom: 10px;
         }
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 4px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
+        /* Search & Filter Bar */
+        .search-box {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .section-title p {
-            color: var(--text-light);
-            font-size: 1.1rem;
+        .search-box input, .search-box select {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            outline: none;
+            font-size: 1rem;
         }
 
-        /* Features / Services Grid */
-        .grid {
+        /* Candidate Cards Grid */
+        .candidates-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
-        .card {
-            background: var(--card-bg);
-            padding: 40px 30px;
+        .candidate-card {
+            background: white;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            transition: var(--transition);
-            border: 1px solid #f1f5f9;
-            position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #f1f5f9;
+            transition: var(--transition);
         }
 
-        .card:hover {
-            transform: translateY(-10px);
+        .candidate-card:hover {
+            transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-color: rgba(16, 185, 129, 0.3);
         }
 
-        .card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-            background: rgba(16, 185, 129, 0.1);
-            width: 80px;
-            height: 80px;
+        .candidate-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+
+        .candidate-body {
+            padding: 25px;
+        }
+
+        .candidate-body h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .candidate-info {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-            transition: var(--transition);
+            gap: 8px;
         }
 
-        .card:hover i {
-            background: var(--primary);
-            color: white;
-            transform: rotate(10deg);
+        .candidate-info i {
+            color: var(--primary);
         }
 
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
+        .card-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
         }
 
-        .card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Modal / Admin Overlay */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -314,23 +315,19 @@
             z-index: 2000;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
         }
 
         .modal-content {
             background: white;
-            padding: 45px;
+            padding: 40px;
             border-radius: 24px;
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.2);
             position: relative;
-            transform: scale(0.9);
-            animation: scaleUp 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes scaleUp {
-            to { transform: scale(1); }
+            margin: auto;
         }
 
         .close-modal {
@@ -340,11 +337,6 @@
             font-size: 1.5rem;
             color: var(--text-light);
             cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-modal:hover {
-            color: var(--secondary);
         }
 
         .form-group {
@@ -359,29 +351,52 @@
             color: var(--secondary);
         }
 
-        .form-group input {
+        .form-group input, .form-group select {
             width: 100%;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border: 2px solid #e2e8f0;
             border-radius: 12px;
             font-size: 1rem;
-            transition: var(--transition);
             outline: none;
         }
 
-        .form-group input:focus {
+        .form-group input:focus, .form-group select:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
         }
 
-        .error-msg {
-            color: #ef4444;
-            font-size: 0.85rem;
-            margin-top: 5px;
+        /* Payment options */
+        .payment-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .payment-card {
+            flex: 1;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-card input {
             display: none;
         }
 
-        /* Admin Dashboard (Hidden by default) */
+        .payment-card.selected, .payment-card:hover {
+            border-color: var(--primary);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .payment-card i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        /* Admin Dashboard */
         #adminDashboard {
             display: none;
             padding: 40px 5%;
@@ -396,53 +411,57 @@
             padding: 20px 30px;
             border-radius: 16px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .stat-card {
+        .dashboard-section {
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 16px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            border-right: 5px solid var(--primary);
+            margin-bottom: 30px;
         }
 
-        .stat-card h4 {
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        th {
             color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-weight: 700;
+            background: #f8fafc;
         }
 
-        .stat-card span {
-            font-size: 2rem;
-            font-weight: 900;
+        td {
             color: var(--secondary);
+            font-weight: 600;
         }
 
-        /* Footer */
         footer {
             background: var(--secondary);
             color: #94a3b8;
-            padding: 50px 5% 20px;
+            padding: 40px 5%;
             text-align: center;
         }
 
         footer p {
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
+            padding-top: 20px;
         }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -450,124 +469,229 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-info">
-            <span><i class="fas fa-phone-alt"></i> +966 50 000 0000</span>
-            <span><i class="fas fa-envelope"></i> info@alraga.com</span>
+            <span><i class="fas fa-phone-alt"></i> <span id="displayPhone">+974 3000 0000</span></span>
+            <span><i class="fas fa-envelope"></i> <span id="displayEmail">info@alraga.com</span></span>
         </div>
         <div>
-            <span><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</span>
+            <span><i class="fas fa-map-marker-alt"></i> <span id="displayLocation">الدوحة، دولة قطر</span></span>
         </div>
     </div>
 
     <!-- Main Website View -->
     <div id="websiteView">
-        <!-- Navbar -->
         <nav>
-            <a href="#" class="logo">
-                <i class="fas fa-handshake"></i> الرجا للاستقدام
+            <a href="#" class="logo" onclick="switchPage('home')">
+                <i class="fas fa-home"></i> <span id="displayCompanyName">الرجا للاستقدام</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#home" class="active">الرئيسية</a></li>
-                <li><a href="#services">خدماتنا</a></li>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
+                <li><a id="navHome" class="active" onclick="switchPage('home')">الرئيسية</a></li>
+                <li><a id="navCandidates" onclick="switchPage('candidates')">الكوادر والطلب</a></li>
                 <li><a href="#" class="admin-btn" onclick="openLoginModal()"><i class="fas fa-lock"></i> دخول الإدارة</a></li>
             </ul>
         </nav>
 
-        <!-- Hero Section -->
-        <header id="home" class="hero">
-            <h1>نربط الكفاءات المتميزة <span>بأفضل الفرص</span></h1>
-            <p>شركة الرجا للاستقدام، شريكك الموثوق لتوفير الأيدي العاملة الماهرة والمدربة بدقة لتلبية كافة احتياجات قطاعات الأعمال والأفراد بمعايير احترافية عالية.</p>
-            <div class="hero-btns">
-                <a href="#services" class="btn btn-primary">استكشف خدماتنا</a>
-                <a href="#contact" class="btn btn-outline">تواصل معنا الآن</a>
-            </div>
-        </header>
+        <!-- PAGE 1: Home Intro -->
+        <div id="pageHome">
+            <header class="hero">
+                <h1>رائدون في استقدام <span>العمالة المنزلية</span> المعتمدة</h1>
+                <p>نفرّط في كل تفاصيل البحث لنقدم لك أفضل الكوادر المنزلية المدربة بكفاءة وأمان تام لعائلتك في قطر.</p>
+                <button class="btn btn-primary" onclick="switchPage('candidates')">اطلب الآن وتصفح الكوادر</button>
+            </header>
 
-        <!-- Services Section -->
-        <section id="services" class="container">
-            <div class="section-title">
-                <h2>خدماتنا الاحترافية</h2>
-                <p>نقدم حلول استقدام متكاملة ومصممة خصيصاً لتناسب تطلعاتكم</p>
-            </div>
-            <div class="grid">
-                <div class="card">
-                    <i class="fas fa-user-tie"></i>
-                    <h3>استقدام الكوادر المهنية</h3>
-                    <p>توفير كوادر بشرية متخصصة ومؤهلة في مختلف المجالات الإدارية والفنية بدقة وسرعة فائقة.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-home"></i>
-                    <h3>العمالة المنزلية</h3>
-                    <p>اختيار عمالة منزلية مدربة بعناية فائقة لضمان أعلى مستويات الأمان والراحة لعائلتك.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>فحص واختبار الكفاءة</h3>
-                    <p>نخضع جميع المرشحين لاختبارات دقيقة للتأكد من جاهزيتهم المهنية والأخلاقية قبل التعاقد.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" style="background: #fff; padding: 80px 0;">
-            <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <section class="features-intro container">
                 <div class="section-title">
                     <h2>لماذا تختار شركة الرجا؟</h2>
-                    <p>نتميز بالشفافية والسرعة والالتزام التام بالمواصفات</p>
+                    <p>نحن نضمن لك راحة البال عبر خدمات احترافية للعمالة المنزلية</p>
                 </div>
-                <div class="grid">
-                    <div class="card">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>فحص دقيق وأمان</h3>
+                        <p>جميع العمالة المنزلية خاضعة لفحوصات واختبارات دقيقة لضمان الأمانة والكفاءة.</p>
+                    </div>
+                    <div class="feature-card">
                         <i class="fas fa-bolt"></i>
-                        <h3>سرعة الإنجاز</h3>
-                        <p>ننجز إجراءات الاستقدام في أسرع وقت ممكن مع الالتزام بالأنظمة الرسمية.</p>
+                        <h3>سرعة في الإجراءات</h3>
+                        <p>ننجز كافة معاملات التعاقد والاستقدام وفق الأنظمة المعتمدة بكل سلاسة.</p>
                     </div>
-                    <div class="card">
-                        <i class="fas fa-hand-holding-usd"></i>
-                        <h3>أسعار تنافسية</h3>
-                        <p>باقات مرنة ومدروسة تناسب كافة العملاء مع ضمانات شاملة.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-headset"></i>
-                        <h3>دعم عملاء مستمر</h3>
-                        <p>فريق دعم فني متواجد على مدار الساعة للإجابة على استفساراتكم ومتابعة طلباتكم.</p>
+                    <div class="feature-card">
+                        <i class="fas fa-credit-card"></i>
+                        <h3>دفع إلكتروني آمن</h3>
+                        <p>ادفع بكل سهولة وأمان عبر بطاقات الفيزا والماستر كارد وبوابات دفع معتمدة.</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- Footer -->
-        <footer id="contact">
-            <h3>شركة الرجا للاستقدام</h3>
-            <p style="margin-top: 15px;">جميع الحقوق محفوظة © 2026 شركة الرجا للاستقدام | Alraga Recruitment</p>
+        <!-- PAGE 2: Candidates & CVs -->
+        <div id="pageCandidates" style="display: none;" class="container">
+            <div class="section-title">
+                <h2>الكوادر والسير الذاتية للعمالة المنزلية المتاحة</h2>
+                <p>تصفح المرشحين المتاحين للاستقدام الفوري واضغط على "اطلب الآن"</p>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchKeyword" placeholder="ابحث باسم المرشح أو المهنة (طاهية، مربية...)" oninput="filterCandidates()">
+                <select id="filterNationality" onchange="filterCandidates()">
+                    <option value="">كل الجنسيات</option>
+                </select>
+            </div>
+
+            <div id="publicCandidatesGrid" class="candidates-grid">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <footer>
+            <h3 id="footerCompanyName">شركة الرجا للاستقدام</h3>
+            <p>جميع الحقوق محفوظة © 2026 - متخصصون في استقدام العمالة المنزلية</p>
         </footer>
     </div>
 
-    <!-- Admin Dashboard View -->
+    <!-- Order & Payment Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+            <h3 style="margin-bottom: 15px; text-align: center; color: var(--secondary);"><i class="fas fa-file-invoice-dollar" style="color: var(--primary);"></i> طلب استقدام العمالة المنزلية</h3>
+            <p id="selectedCandidateText" style="text-align: center; margin-bottom: 20px; font-weight: 700; color: var(--primary);"></p>
+            
+            <form action="submitRecruitment" method="POST">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="orderClientName" name="fullName" required placeholder="ادخل اسمك الكريم ثلاثي">
+                </div>
+                <div class="form-group">
+                    <label>رقم الجوال القطري</label>
+                    <input type="text" id="orderClientPhone" name="phone" required placeholder="مثال: +97431234567 أو 5xxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>اختر طريقة الدفع الإلكتروني</label>
+                    <div class="payment-options">
+                        <label class="payment-card selected" onclick="selectPayment('Visa', this)">
+                            <i class="fab fa-cc-visa" style="color: #1a1f71;"></i>
+                            <div>فيزا (Visa)</div>
+                            <input type="radio" name="paymentMethod" value="Visa" checked>
+                        </label>
+                        <label class="payment-card" onclick="selectPayment('MasterCard', this)">
+                            <i class="fab fa-cc-mastercard" style="color: #eb001b;"></i>
+                            <div>ماستر كارد</div>
+                            <input type="radio" name="paymentMethod" value="MasterCard">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>رقم بطاقة الدفع (للتحقق عبر Luhn)</label>
+                    <input type="text" name="cardNumber" placeholder="أدخل أرقام البطاقة" required>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>تاريخ الانتهاء</label>
+                        <input type="text" name="expiryDate" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>رمز الأمان (CVV)</label>
+                        <input type="password" name="cvv" maxlength="4" placeholder="123" required>
+                    </div>
+                </div>
+                <input type="hidden" name="packageType" id="packageTypeField" value="باقة العمالة المنزلية">
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">تأكيد الطلب والدفع الآمن</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
     <div id="adminDashboard">
         <div class="dashboard-header">
-            <h2><i class="fas fa-tachometer-alt" style="color: var(--primary); margin-left: 10px;"></i> لوحة تحكم الإدارة (الرجا)</h2>
-            <button class="btn btn-primary" onclick="logoutAdmin()" style="padding: 8px 20px; font-size: 0.9rem; background: #ef4444;"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+            <h2><i class="fas fa-tachometer-alt" style="color: var(--primary);"></i> لوحة تحكم استقدام العمالة المنزلية</h2>
+            <button class="btn btn-primary" onclick="logoutAdmin()" style="background: #ef4444; padding: 8px 20px; font-size: 0.9rem;"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
         </div>
-        
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h4>إجمالي الطلبات الجديدة</h4>
-                <span>124</span>
-            </div>
-            <div class="stat-card">
-                <h4>الطلبات قيد المعالجة</h4>
-                <span>38</span>
-            </div>
-            <div class="stat-card">
-                <h4>العملاء المسجلين</h4>
-                <span>1,420</span>
+
+        <div class="dashboard-section">
+            <h3 style="margin-bottom: 20px; color: var(--secondary);"><i class="fas fa-cogs" style="color: var(--primary);"></i> إعدادات الشركة وبيانات التواصل</h3>
+            <form onsubmit="updateSettings(event)">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    <div class="form-group">
+                        <label>اسم الشركة</label>
+                        <input type="text" id="settingName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الهاتف</label>
+                        <input type="text" id="settingPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>البريد الإلكتروني للشركة</label>
+                        <input type="email" id="settingEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>المدينة / العنوان</label>
+                        <input type="text" id="settingLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة مرور الأدمن الجديدة</label>
+                        <input type="password" id="settingNewPass" placeholder="اتركها فارغة إن لم ترد التغيير">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">حفظ التعديلات العامة</button>
+            </form>
+        </div>
+
+        <div class="dashboard-section">
+            <h3 style="margin-bottom: 20px; color: var(--secondary);"><i class="fas fa-user-shield" style="color: var(--primary);"></i> إدارة صلاحيات المشرفين (الأدمن)</h3>
+            <form onsubmit="addAdmin(event)" style="margin-bottom: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+                <input type="email" id="newAdminEmail" placeholder="إيميل المشرف الجديد" required style="flex: 1; padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px;">
+                <input type="password" id="newAdminPass" placeholder="كلمة المرور" required style="flex: 1; padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px;">
+                <button type="submit" class="btn btn-primary">منح صلاحية أدمن</button>
+            </form>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>البريد الإلكتروني</th><th>الإجراء</th></tr>
+                    </thead>
+                    <tbody id="adminsTableBody"></tbody>
+                </table>
             </div>
         </div>
 
-        <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.03);">
-            <h3 style="margin-bottom: 20px; color: var(--secondary);">سجل الطلبات والعمليات الأخيرة</h3>
-            <p style="color: var(--text-light);">لا توجد طلبات جديدة معلقة حالياً. لوحة التحكم محمية وآمنة بالكامل.</p>
+        <div class="dashboard-section">
+            <h3 style="margin-bottom: 20px; color: var(--secondary);"><i class="fas fa-file-upload" style="color: var(--primary);"></i> إضافة عمالة منزلية وسيرة ذاتية جديدة</h3>
+            <form onsubmit="handleAddCandidate(event)">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    <div class="form-group">
+                        <label>اسم العامل/ة</label>
+                        <input type="text" id="candName" required placeholder="مثال: مريانا - طاهية منزلية">
+                    </div>
+                    <div class="form-group">
+                        <label>الوظيفة المنزلية</label>
+                        <input type="text" id="candJob" required placeholder="مثال: طاهية / مربية أطفال">
+                    </div>
+                    <div class="form-group">
+                        <label>الجنسية</label>
+                        <input type="text" id="candNationality" required placeholder="مثال: فلبينية / كينية">
+                    </div>
+                    <div class="form-group">
+                        <label>رابط صورة العامل/ة (Image URL)</label>
+                        <input type="text" id="candImg" required placeholder="رابط الصورة الشخصية">
+                    </div>
+                    <div class="form-group">
+                        <label>رابط ملف الـ CV (PDF)</label>
+                        <input type="text" id="candCvLink" required placeholder="رابط السيرة الذاتية">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">نشر العمالة للعملاء</button>
+            </form>
+        </div>
+
+        <div class="dashboard-section">
+            <h3 style="margin-bottom: 10px; color: var(--secondary);"><i class="fas fa-users" style="color: var(--primary);"></i> قائمة عمالة الاستقدام الحالية</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>الصورة</th><th>الاسم</th><th>المهنة</th><th>الجنسية</th><th>السي في</th><th>الإجراء</th></tr>
+                    </thead>
+                    <tbody id="adminCandidatesTable"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -575,60 +699,223 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeLoginModal()">&times;</span>
-            <div style="text-align: center; margin-bottom: 25px;">
-                <i class="fas fa-lock" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 10px;"></i>
-                <h3 style="color: var(--secondary);">تسجيل دخول الإدارة</h3>
-                <p style="color: var(--text-light); font-size: 0.9rem;">أدخل بيانات الاعتماد الخاصة بالمدير للوصول</p>
-            </div>
-            <form id="loginForm" onsubmit="handleLogin(event)">
+            <h3 style="margin-bottom: 20px; text-align: center;"><i class="fas fa-lock" style="color: var(--primary);"></i> دخول الإدارة</h3>
+            <form onsubmit="handleLogin(event)">
                 <div class="form-group">
-                    <label>البريد الإلكتروني للإدارة</label>
-                    <input type="email" id="adminEmail" placeholder="admin@alraga.com" required>
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="loginEmail" required>
                 </div>
                 <div class="form-group">
                     <label>كلمة المرور</label>
-                    <input type="password" id="adminPassword" placeholder="••••••••" required>
-                    <div id="loginError" class="error-msg">البريد الإلكتروني أو كلمة المرور غير صحيحة!</div>
+                    <input type="password" id="loginPassword" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">دخول آمن</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">تسجيل الدخول</button>
             </form>
         </div>
     </div>
 
     <script>
-        // Admin credentials (يمكنك تغييرهم لأي إيميل وباسورد تحبهم)
-        const validEmail = "admin@alraga.com";
-        const validPass = "123456";
+        let settings = JSON.parse(localStorage.getItem('alraga_settings')) || {
+            name: "شركة الرجا للاستقدام",
+            phone: "+974 3000 0000",
+            email: "info@alraga.com",
+            location: "الدوحة، دولة قطر"
+        };
 
-        function openLoginModal() {
-            document.getElementById('loginModal').style.display = 'flex';
+        let admins = JSON.parse(localStorage.getItem('alraga_admins')) || [
+            { email: "admin@alraga.com", pass: "123456" }
+        ];
+
+        let candidates = JSON.parse(localStorage.getItem('alraga_candidates')) || [
+            { id: 1, name: "روزيتا - طاهية", job: "طاهية منزلية", nationality: "فلبينية", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80", cvLink: "#" },
+            { id: 2, name: "أنيتا - مربية", job: "رعاية أطفال", nationality: "كينية", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80", cvLink: "#" }
+        ];
+
+        function loadSettings() {
+            document.getElementById('displayCompanyName').innerText = settings.name;
+            document.getElementById('footerCompanyName').innerText = settings.name;
+            document.getElementById('displayPhone').innerText = settings.phone;
+            document.getElementById('displayEmail').innerText = settings.email;
+            document.getElementById('displayLocation').innerText = settings.location;
+            document.getElementById('pageTitle').innerText = settings.name;
+
+            document.getElementById('settingName').value = settings.name;
+            document.getElementById('settingPhone').value = settings.phone;
+            document.getElementById('settingEmail').value = settings.email;
+            document.getElementById('settingLocation').value = settings.location;
         }
 
-        function closeLoginModal() {
-            document.getElementById('loginModal').style.display = 'none';
-            document.getElementById('loginError').style.display = 'none';
-            document.getElementById('loginForm').reset();
+        loadSettings();
+        renderPublicCandidates();
+
+        function switchPage(page) {
+            if (page === 'home') {
+                document.getElementById('pageHome').style.display = 'block';
+                document.getElementById('pageCandidates').style.display = 'none';
+                document.getElementById('navHome').classList.add('active');
+                document.getElementById('navCandidates').classList.remove('active');
+            } else if (page === 'candidates') {
+                document.getElementById('pageHome').style.display = 'none';
+                document.getElementById('pageCandidates').style.display = 'block';
+                document.getElementById('navCandidates').classList.add('active');
+                document.getElementById('navHome').classList.remove('active');
+            }
+            window.scrollTo(0, 0);
         }
 
-        function handleLogin(event) {
-            event.preventDefault();
-            const inputEmail = document.getElementById('adminEmail').value.trim();
-            const inputPass = document.getElementById('adminPassword').value.trim();
+        function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
+        function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; }
+        
+        function openOrderModal(candName) {
+            document.getElementById('selectedCandidateText').innerText = `طلب استقدام العامل/ة: ${candName}`;
+            document.getElementById('packageTypeField').value = `استقدام: ${candName}`;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+        function closeOrderModal() { document.getElementById('orderModal').style.display = 'none'; }
 
-            if (inputEmail === validEmail && inputPass === validPass) {
+        function selectPayment(type, el) {
+            document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            el.querySelector('input').checked = true;
+        }
+
+        function renderPublicCandidates() {
+            const grid = document.getElementById('publicCandidatesGrid');
+            if(!grid) return;
+            grid.innerHTML = '';
+            candidates.forEach(cand => {
+                grid.innerHTML += `
+                    <div class="candidate-card">
+                        <img src="${cand.img}" class="candidate-img" alt="${cand.name}">
+                        <div class="candidate-body">
+                            <h3>${cand.name}</h3>
+                            <div class="candidate-info"><i class="fas fa-briefcase"></i> ${cand.job}</div>
+                            <div class="candidate-info"><i class="fas fa-flag"></i> ${cand.nationality}</div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" style="flex: 1; padding: 10px;" onclick="openOrderModal('${cand.name}')">اطلب الآن</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterCandidates() {
+            // تصفية الكوادر حسب البحث
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const pass = document.getElementById('loginPassword').value.trim();
+            const foundAdmin = admins.find(a => a.email === email && a.pass === pass);
+            if (foundAdmin) {
                 closeLoginModal();
                 document.getElementById('websiteView').style.display = 'none';
                 document.getElementById('adminDashboard').style.display = 'block';
+                renderAdminDashboard();
                 window.scrollTo(0, 0);
             } else {
-                document.getElementById('loginError').style.display = 'block';
+                alert('بيانات دخول الأدمن غير صحيحة!');
             }
         }
 
         function logoutAdmin() {
             document.getElementById('adminDashboard').style.display = 'none';
             document.getElementById('websiteView').style.display = 'block';
-            document.getElementById('loginForm').reset();
+        }
+
+        function updateSettings(e) {
+            e.preventDefault();
+            settings.name = document.getElementById('settingName').value;
+            settings.phone = document.getElementById('settingPhone').value;
+            settings.email = document.getElementById('settingEmail').value;
+            settings.location = document.getElementById('settingLocation').value;
+
+            const newPass = document.getElementById('settingNewPass').value.trim();
+            if(newPass) {
+                admins[0].pass = newPass;
+                localStorage.setItem('alraga_admins', JSON.stringify(admins));
+            }
+
+            localStorage.setItem('alraga_settings', JSON.stringify(settings));
+            loadSettings();
+            alert('تم حفظ إعدادات الشركة بنجاح!');
+        }
+
+        function addAdmin(e) {
+            e.preventDefault();
+            const email = document.getElementById('newAdminEmail').value.trim();
+            const pass = document.getElementById('newAdminPass').value.trim();
+            admins.push({ email, pass });
+            localStorage.setItem('alraga_admins', JSON.stringify(admins));
+            renderAdminsTable();
+            alert('تمت إضافة المشرف بنجاح!');
+            e.target.reset();
+        }
+
+        function deleteAdmin(index) {
+            if(admins.length <= 1) { alert('يجب أن يبقى مشرف واحد على الأقل!'); return; }
+            admins.splice(index, 1);
+            localStorage.setItem('alraga_admins', JSON.stringify(admins));
+            renderAdminsTable();
+        }
+
+        function renderAdminsTable() {
+            const tbody = document.getElementById('adminsTableBody');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            admins.forEach((adm, idx) => {
+                tbody.innerHTML += `<tr><td>${adm.email}</td><td><button onclick="deleteAdmin(${idx})" style="background:#ef4444; color:white; border:none; padding:5px 10px; border-radius:6px; cursor:pointer;">حذف</button></td></tr>`;
+            });
+        }
+
+        function handleAddCandidate(e) {
+            e.preventDefault();
+            const newCand = {
+                id: Date.now(),
+                name: document.getElementById('candName').value,
+                job: document.getElementById('candJob').value,
+                nationality: document.getElementById('candNationality').value,
+                img: document.getElementById('candImg').value,
+                cvLink: document.getElementById('candCvLink').value
+            };
+            candidates.push(newCand);
+            localStorage.setItem('alraga_candidates', JSON.stringify(candidates));
+            renderAdminCandidates();
+            renderPublicCandidates();
+            alert('تم إضافة العامل/ة ونشره للعملاء بنجاح!');
+            e.target.reset();
+        }
+
+        function deleteCandidate(index) {
+            candidates.splice(index, 1);
+            localStorage.setItem('alraga_candidates', JSON.stringify(candidates));
+            renderAdminCandidates();
+            renderPublicCandidates();
+        }
+
+        function renderAdminCandidates() {
+            const tbody = document.getElementById('adminCandidatesTable');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            candidates.forEach((cand, idx) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><img src="${cand.img}" width="40" height="40" style="object-fit:cover; border-radius:50%;"></td>
+                        <td>${cand.name}</td>
+                        <td>${cand.job}</td>
+                        <td>${cand.nationality}</td>
+                        <td><a href="${cand.cvLink}" target="_blank">عرض CV</a></td>
+                        <td><button onclick="deleteCandidate(${idx})" style="background:#ef4444; color:white; border:none; padding:5px 10px; border-radius:6px; cursor:pointer;">حذف</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function renderAdminDashboard() {
+            renderAdminsTable();
+            renderAdminCandidates();
         }
     </script>
 </body>
