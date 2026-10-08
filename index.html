@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة الرجا للاستقدام | Alraga Recruitment</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="bg-blue-600 text-white p-2 rounded-xl font-bold text-xl flex items-center justify-center w-10 h-10 shadow-lg">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-blue-900 leading-tight">الرجا للاستقدام</h1>
+                    <span class="text-xs text-gray-500 font-medium">Alraga Recruitment Agency</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-6 space-x-reverse font-medium text-gray-600">
+                <button onclick="switchTab('home')" class="hover:text-blue-600 transition">الرئيسية</button>
+                <button onclick="switchTab('cvs')" class="hover:text-blue-600 transition">السير الذاتية (العمالة)</button>
+                <button onclick="switchTab('orders')" class="hover:text-blue-600 transition">طلبات الاستقدام</button>
+                <button onclick="switchTab('contact')" class="hover:text-blue-600 transition">اتصل بنا</button>
+            </nav>
+
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div id="user-badge" class="hidden text-sm bg-blue-50 text-blue-800 px-3 py-1.5 rounded-full font-semibold border border-blue-200">
+                    <i class="fa-solid fa-user-shield ml-1"></i> <span id="user-role-text">مسؤول</span>
+                </div>
+                <button id="auth-btn" onclick="openAuthModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition shadow">
+                    <i class="fa-solid fa-right-to-bracket ml-1"></i> تسجيل دخول الإدارة
+                </button>
+                <button id="logout-btn" onclick="logout()" class="hidden bg-red-50 hover:bg-red-100 text-red-600 px-3 py-2 rounded-lg text-sm font-semibold transition">
+                    خروج
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container mx-auto px-4 py-8 min-h-screen">
+
+        <!-- HOME TAB -->
+        <section id="tab-home" class="space-y-12">
+            <!-- Hero Section -->
+            <div class="bg-gradient-to-r from-blue-900 to-indigo-800 text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="bg-blue-500/30 text-blue-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block border border-blue-400/30">الريادة في استقدام العمالة الماهرة</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">شركة الرجا لاستقدام الأيدي العاملة</h2>
+                    <p class="text-gray-200 text-base md:text-lg mb-8 leading-relaxed">نوفر أحدث السير الذاتية للكوادر المهنية المدربة بدقة عالية وفق أعلى معايير الجودة ومتابعة دورية وفترة ضمان شاملة.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="switchTab('cvs')" class="bg-white text-blue-900 hover:bg-gray-100 font-bold px-6 py-3 rounded-xl shadow transition flex items-center">
+                            <i class="fa-solid fa-users ml-2"></i> تصفح السير الذاتية الآن
+                        </button>
+                        <button onclick="switchTab('orders')" class="bg-blue-700 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow transition border border-blue-500">
+                            <i class="fa-solid fa-file-invoice ml-2"></i> اطلب عاملة / عامل
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute -left-10 -bottom-10 opacity-10 text-9xl">
+                    <i class="fa-solid fa-building-user"></i>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">فترة ضمان حقيقية</h3>
+                    <p class="text-gray-500 text-sm">نضمن استقرار العمالة ومتابعة مستمرة طوال فترة الضمان القانونية بكل احترافية.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">سرعة الإجراءات</h3>
+                    <p class="text-gray-500 text-sm">إنجاز معاملات التأشيرات وعقود الاستقدام بدقة وسرعة متناهية عبر منصة رقمية موحدة.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">اختيار دقيق ومفحوص</h3>
+                    <p class="text-gray-500 text-sm">كوادر بشرية ذات كفاءة عالية وخبرات سابقة مثبتة في مختلف المهن والقطاعات.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CVS TAB -->
+        <section id="tab-cvs" class="hidden space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-gray-800">السير الذاتية المتاحة</h2>
+                    <p class="text-gray-500 text-sm mt-1">ابحث وتصفح العمالة المتاحة للاستقدام واختر ما يناسب متطلباتك.</p>
+                </div>
+                <!-- Admin Add Button (Hidden for non-admin) -->
+                <div id="admin-actions-container" class="hidden">
+                    <button onclick="openAddCVModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl shadow flex items-center text-sm transition">
+                        <i class="fa-solid fa-plus ml-2"></i> إضافة سي في جديد (للأدمن فقط)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search & Filters -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">بحث بالاسم أو المهن:</label>
+                    <input type="text" id="search-input" oninput="filterCVs()" placeholder="مثال: طباخة، حلاقة، خياطة..." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">تصفية حسب الجنسية:</label>
+                    <select id="filter-nationality" onchange="filterCVs()" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-600">
+                        <option value="">جميع الجنسيات</option>
+                        <option value="مصر">مصر</option>
+                        <option value="الفلبين">الفلبين</option>
+                        <option value="أغندا">أغندا</option>
+                        <option value="كينيا">كينيا</option>
+                        <option value="بنغلاديش">بنغلاديش</option>
+                        <option value="إثيوبيا">إثيوبيا</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">تصفية حسب المهنة:</label>
+                    <select id="filter-job" onchange="filterCVs()" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-600">
+                        <option value="">جميع المهن</option>
+                        <option value="عامل منزلي">عامل منزلي</option>
+                        <option value="طباخ / طباخة">طباخ / طباخة</option>
+                        <option value="سائق خاص">سائق خاص</option>
+                        <option value="ممرضة منزلية">ممرضة منزلية</option>
+                        <option value="حلاق">حلاق</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- CV Cards Grid -->
+            <div id="cv-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Dynamic CV Cards -->
+            </div>
+        </section>
+
+        <!-- ORDERS TAB -->
+        <section id="tab-orders" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-gray-800">طلبات الاستقدام</h2>
+                    <p class="text-gray-500 text-sm mt-1">قم بتقديم طلب استقدام جديد أو متابعة الطلبات المسجلة.</p>
+                </div>
+                <button onclick="openOrderModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2.5 rounded-xl shadow text-sm transition flex items-center">
+                    <i class="fa-solid fa-file-circle-plus ml-2"></i> تقديم طلب استقدام جديد
+                </button>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="p-4 border-b border-gray-100 font-bold text-gray-700">قائمة الطلبات المسجلة في النظام</div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider border-b border-gray-100">
+                                <th class="p-4">رقم الطلب</th>
+                                <th class="p-4">اسم العميل</th>
+                                <th class="p-4">رقم الهاتف</th>
+                                <th class="p-4">المهنة المطلوبة</th>
+                                <th class="p-4">الجنسية المفضلة</th>
+                                <th class="p-4">حالة الطلب</th>
+                                <th class="p-4">الإجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body" class="divide-y divide-gray-100 text-sm">
+                            <!-- Dynamic Orders -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT TAB -->
+        <section id="tab-contact" class="hidden space-y-6 max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center">
+            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-4">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800">تواصل مع شركة الرجا للاستقدام</h2>
+            <p class="text-gray-500 text-sm">فريق خدمة العملاء جاهز للإجابة على استفساراتكم على مدار الساعة.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right mt-6">
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                    <span class="block text-xs text-gray-400 font-bold">الهاتف والدعم:</span>
+                    <span class="text-gray-700 font-bold mt-1 block">+20 100 000 0000</span>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                    <span class="block text-xs text-gray-400 font-bold">البريد الإلكتروني للإدارة:</span>
+                    <span class="text-gray-700 font-bold mt-1 block">admin@alraga.com</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 mt-16 py-6 text-center text-sm text-gray-500">
+        <p>جميع حقوق التطبيق محفوظة © 2026 شركة الرجا للاستقدام (Alraga Recruitment).</p>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeAuthModal()" class="absolute top-4 left-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">تسجيل دخول الإدارة (أدمن الشركة)</h3>
+            <p class="text-gray-500 text-xs mb-6">ملاحظة: حساب الأدمن خاص بإدارة الشركة لإضافة وتعديل السير الذاتية.</p>
+            
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">البريد الإلكتروني:</label>
+                    <input type="email" id="login-email" required placeholder="admin@alraga.com" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">كلمة المرور:</label>
+                    <input type="password" id="login-password" required placeholder="••••••••" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+                <div class="bg-blue-50 p-3 rounded-xl text-xs text-blue-700">
+                    💡 <strong>حساب الأدمن التجريبي:</strong><br>البريد: <code>admin@alraga.com</code><br>كلمة المرور: <code>123456</code>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow transition">تسجيل الدخول</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add CV Modal (Admin Only) -->
+    <div id="add-cv-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeAddCVModal()" class="absolute top-4 left-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">إضافة سيرة ذاتية جديدة</h3>
+            
+            <form onsubmit="handleSaveCV(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">اسم العامل/ة:</label>
+                    <input type="text" id="cv-name" required placeholder="مثال: فاطمة أحمد" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1">المهنة:</label>
+                        <select id="cv-job" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                            <option value="عامل منزلي">عامل منزلي</option>
+                            <option value="طباخ / طباخة">طباخ / طباخة</option>
+                            <option value="سائق خاص">سائق خاص</option>
+                            <option value="ممرضة منزلية">ممرضة منزلية</option>
+                            <option value="حلاق">حلاق</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1">الجنسية:</label>
+                        <select id="cv-nationality" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                            <option value="مصر">مصر</option>
+                            <option value="الفلبين">الفلبين</option>
+                            <option value="أغندا">أغندا</option>
+                            <option value="كينيا">كينيا</option>
+                            <option value="بنغلاديش">بنغلاديش</option>
+                            <option value="إثيوبيا">إثيوبيا</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1">العمر:</label>
+                        <input type="number" id="cv-age" required placeholder="مثال: 28" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1">سنوات الخبرة:</label>
+                        <input type="text" id="cv-experience" required placeholder="مثال: 3 سنوات" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">الديانة واللغات:</label>
+                    <input type="text" id="cv-details" required placeholder="مثال: مسلمة، تحدث العربية والإنجليزية" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow transition">حفظ ونشر السيرة الذاتية</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Submit Order Modal -->
+    <div id="order-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeOrderModal()" class="absolute top-4 left-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">تقديم طلب استقدام جديد</h3>
+            
+            <form onsubmit="handleSaveOrder(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">اسم العميل:</label>
+                    <input type="text" id="order-client" required placeholder="الاسم ثلاثي" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">رقم الهاتف للتواصل:</label>
+                    <input type="text" id="order-phone" required placeholder="01000000000" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">المهنة المطلوبة:</label>
+                    <select id="order-job" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                        <option value="عامل منزلي">عامل منزلي</option>
+                        <option value="طباخ / طباخة">طباخ / طباخة</option>
+                        <option value="سائق خاص">سائق خاص</option>
+                        <option value="ممرضة منزلية">ممرضة منزلية</option>
+                        <option value="حلاق">حلاق</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">الجنسية المفضلة:</label>
+                    <select id="order-nationality" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600">
+                        <option value="غير محدد / أي جنسية">غير محدد / أي جنسية</option>
+                        <option value="مصر">مصر</option>
+                        <option value="الفلبين">الفلبين</option>
+                        <option value="أغندا">أغندا</option>
+                        <option value="كينيا">كينيا</option>
+                        <option value="بنغلاديش">بنغلاديش</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow transition">إرسال الطلب للشركة</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        let cvs = JSON.parse(localStorage.getItem('alraga_cvs')) || [
+            { id: 1, name: 'فاطمة محمد', job: 'عامل منزلي', nationality: 'أغندا', age: 26, experience: 'سنتان', details: 'مسلمة، تجيد التنظيف والترتيب' },
+            { id: 2, name: 'ماريا سانتوس', job: 'طباخ / طباخة', nationality: 'الفلبين', age: 32, experience: '5 سنوات', details: 'تتحدث الإنجليزية بطلاقة، خبرة بالطبخ الخليجي' },
+            { id: 3, name: 'أحمد علي', job: 'سائق خاص', nationality: 'مصر', age: 35, experience: '10 سنوات', details: 'رخصة قيادة مهنية، معرفة تامة بالطرق' }
+        ];
+
+        let orders = JSON.parse(localStorage.getItem('alraga_orders')) || [
+            { id: 101, client: 'محمد عبد الله', phone: '01012345678', job: 'عامل منزلي', nationality: 'أغندا', status: 'قيد المراجعة' }
+        ];
+
+        let isAdmin = localStorage.getItem('alraga_is_admin') === 'true';
+
+        window.onload = function() {
+            updateAuthUI();
+            renderCVs(cvs);
+            renderOrders();
+        };
+
+        function switchTab(tabId) {
+            ['home', 'cvs', 'orders', 'contact'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+            });
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+        }
+
+        function openAuthModal() { document.getElementById('auth-modal').classList.remove('hidden'); }
+        function closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const pass = document.getElementById('login-password').value;
+
+            if (email === 'admin@alraga.com' && pass === '123456') {
+                isAdmin = true;
+                localStorage.setItem('alraga_is_admin', 'true');
+                alert('تم تسجيل دخول الإدارة بنجاح!');
+                closeAuthModal();
+                updateAuthUI();
+                renderCVs(cvs);
+            } else {
+                alert('البريد أو كلمة المرور غير صحيحة. استخدم البيانات التجريبية الموضحة.');
+            }
+        }
+
+        function logout() {
+            isAdmin = false;
+            localStorage.setItem('alraga_is_admin', 'false');
+            updateAuthUI();
+            renderCVs(cvs);
+            alert('تم تسجيل الخروج بنجاح.');
+        }
+
+        function updateAuthUI() {
+            const authBtn = document.getElementById('auth-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+            const userBadge = document.getElementById('user-badge');
+            const adminActions = document.getElementById('admin-actions-container');
+
+            if (isAdmin) {
+                authBtn.classList.add('hidden');
+                logoutBtn.classList.remove('hidden');
+                userBadge.classList.remove('hidden');
+                adminActions.classList.remove('hidden');
+            } else {
+                authBtn.classList.remove('hidden');
+                logoutBtn.classList.add('hidden');
+                userBadge.classList.add('hidden');
+                adminActions.classList.add('hidden');
+            }
+        }
+
+        function renderCVs(data) {
+            const grid = document.getElementById('cv-grid');
+            grid.innerHTML = '';
+
+            if (data.length === 0) {
+                grid.innerHTML = '<p class="col-span-3 text-center text-gray-400 py-8">لا توجد سير ذاتية مطابقة للبحث.</p>';
+                return;
+            }
+
+            data.forEach(cv => {
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">${cv.job}</span>
+                                <span class="text-xs text-gray-400 font-semibold"><i class="fa-solid fa-earth-americas ml-1"></i>${cv.nationality}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">${cv.name}</h3>
+                            <div class="space-y-1.5 text-sm text-gray-600 mb-6">
+                                <p><strong class="text-gray-400">العمر:</strong> ${cv.age} سنة</p>
+                                <p><strong class="text-gray-400">الخبرة:</strong> ${cv.experience}</p>
+                                <p><strong class="text-gray-400">التفاصيل:</strong> ${cv.details}</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 pt-4 border-t border-gray-100">
+                            <button onclick="requestSpecificCV('${cv.name}')" class="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-bold py-2 rounded-xl transition">اختيار واستقدام</button>
+                            ${isAdmin ? `<button onclick="deleteCV(${cv.id})" class="bg-red-50 hover:bg-red-100 text-red-600 px-3 py-2 rounded-xl text-sm transition"><i class="fa-solid fa-trash"></i></button>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterCVs() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const nat = document.getElementById('filter-nationality').value;
+            const job = document.getElementById('filter-job').value;
+
+            const filtered = cvs.filter(cv => {
+                const matchQuery = cv.name.toLowerCase().includes(query) || cv.job.toLowerCase().includes(query);
+                const matchNat = nat === '' || cv.nationality === nat;
+                const matchJob = job === '' || cv.job === job;
+                return matchQuery && matchNat && matchJob;
+            });
+
+            renderCVs(filtered);
+        }
+
+        function openAddCVModal() { document.getElementById('add-cv-modal').classList.remove('hidden'); }
+        function closeAddCVModal() { document.getElementById('add-cv-modal').classList.add('hidden'); }
+
+        function handleSaveCV(event) {
+            event.preventDefault();
+            const newCv = {
+                id: Date.now(),
+                name: document.getElementById('cv-name').value,
+                job: document.getElementById('cv-job').value,
+                nationality: document.getElementById('cv-nationality').value,
+                age: document.getElementById('cv-age').value,
+                experience: document.getElementById('cv-experience').value,
+                details: document.getElementById('cv-details').value
+            };
+
+            cvs.push(newCv);
+            localStorage.setItem('alraga_cvs', JSON.stringify(cvs));
+            closeAddCVModal();
+            renderCVs(cvs);
+            alert('تمت إضافة السيرة الذاتية بنجاح!');
+        }
+
+        function deleteCV(id) {
+            if (confirm('هل أنت متأكد من حذف هذه السيرة الذاتية؟')) {
+                cvs = cvs.filter(c => c.id !== id);
+                localStorage.setItem('alraga_cvs', JSON.stringify(cvs));
+                renderCVs(cvs);
+            }
+        }
+
+        function openOrderModal() { document.getElementById('order-modal').classList.remove('hidden'); }
+        function closeOrderModal() { document.getElementById('order-modal').classList.add('hidden'); }
+
+        function handleSaveOrder(event) {
+            event.preventDefault();
+            const newOrder = {
+                id: Math.floor(1000 + Math.random() * 9000),
+                client: document.getElementById('order-client').value,
+                phone: document.getElementById('order-phone').value,
+                job: document.getElementById('order-job').value,
+                nationality: document.getElementById('order-nationality').value,
+                status: 'قيد المراجعة'
+            };
+
+            orders.push(newOrder);
+            localStorage.setItem('alraga_orders', JSON.stringify(orders));
+            closeOrderModal();
+            renderOrders();
+            alert('تم إرسال طلبك بنجاح! سيتواصل معك فريق المبيعات قريباً.');
+            switchTab('orders');
+        }
+
+        function renderOrders() {
+            const tbody = document.getElementById('orders-table-body');
+            tbody.innerHTML = '';
+
+            if (orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center p-4 text-gray-400">لا توجد طلبات مسجلة حالياً.</td></tr>';
+                return;
+            }
+
+            orders.forEach(ord => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50/50">
+                        <td class="p-4 font-bold text-blue-600">#${ord.id}</td>
+                        <td class="p-4">${ord.client}</td>
+                        <td class="p-4">${ord.phone}</td>
+                        <td class="p-4">${ord.job}</td>
+                        <td class="p-4">${ord.nationality}</td>
+                        <td class="p-4"><span class="bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full text-xs font-bold">${ord.status}</span></td>
+                        <td class="p-4">
+                            ${isAdmin ? `<button onclick="deleteOrder(${ord.id})" class="text-red-500 hover:text-red-700 text-xs font-bold">حذف</button>` : '<span class="text-gray-400 text-xs">قيد المتابعة</span>'}
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function deleteOrder(id) {
+            if (confirm('هل تريد حذف هذا الطلب؟')) {
+                orders = orders.filter(o => o.id !== id);
+                localStorage.setItem('alraga_orders', JSON.stringify(orders));
+                renderOrders();
+            }
+        }
+
+        function requestSpecificCV(cvName) {
+            switchTab('orders');
+            document.getElementById('order-job').value = 'عامل منزلي';
+            alert(`تم اختيار السيرة الذاتية (${cvName}). يرجى إكمال بيانات طلب الاستقدام الخاص بك.`);
+            openOrderModal();
+        }
+    </script>
+</body>
+</html>
